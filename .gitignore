@@ -1,0 +1,10 @@
+__pycache__/
+*.pt
+*.safetensors
+/script/**/upstream/
+/script/**/report.json
+/script/**/success-rates.json
+/script/menagerie/
+/script/grpo-000140-sft-mixed77-v1/
+/ira-pi05-v7-full-v2-008000-blockbox-20261117/
+/paligemma-tokenizer-35e4f464/

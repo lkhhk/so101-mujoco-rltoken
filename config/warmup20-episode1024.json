@@ -1,0 +1,78 @@
+{
+  "experiment": "SO-101 MuJoCo block-in-box / RL Token",
+  "upstream_rlt_commit": "e3c1f4517108fdff66d93b68bae3a16fc1cd5dd3",
+  "frozen_policy": {
+    "base": "IRA Pi0.5 008000",
+    "sft_cumulative_steps": 30000,
+    "base_sha256": "7f8056e0cebbd8767a93c0f51bf5e20751baad455cf4b9965c07efca2df0fdef",
+    "adapter_sha256": "23707c30f61b5ba02f505c461ac54b4351739acdd47db35ac29f163faeece56a",
+    "policy_version": "8e6eadcdb3a614479c58d5f5359848d5b986cb826979c3128fd48c3830122ef1"
+  },
+  "encoder": {
+    "steps": 20512,
+    "sha256": "8d27d2c61e0794219768bdf45eabf621d0cfb144c5ee8f4ca1ed4f9e0b61136b"
+  },
+  "training": {
+    "start_episode": 640,
+    "start_checkpoint_sha256": "b1e71746bfd89996231ef7443b8df60a6f66c8e89c48bd9b61400cf4238e4c6c",
+    "end_episode": 1024,
+    "extra_warmup_episodes": 20,
+    "warmup_seed_range": [
+      66000,
+      66019
+    ],
+    "warmup_collector": "frozen_sft",
+    "critic_only_warmup_updates": 300,
+    "online_seed_range": [
+      60660,
+      61043
+    ],
+    "critic_updates_per_episode": 80,
+    "actor_updates_per_episode": 40,
+    "critic_learning_rate": 0.0003,
+    "actor_learning_rate": 0.0001,
+    "demonstrations": 0,
+    "archive_every": 100,
+    "archived_episodes": [
+      740,
+      840,
+      940,
+      1024
+    ]
+  },
+  "control": {
+    "batch_size": 1,
+    "chunk_steps": 10,
+    "control_hz": 30,
+    "max_control_steps": 900,
+    "actor_gate_m": 0.04,
+    "actor_phase_max_steps": 240,
+    "normalized_residual_limit": 0.35,
+    "reward": "stable_placement",
+    "chunk_smoothing": false
+  },
+  "evaluation": {
+    "seed_range": [
+      65000,
+      65049
+    ],
+    "repeats_per_seed": 1,
+    "prior_paired_baselines": [
+      "vla_sft",
+      "new_encoder_fresh_640"
+    ]
+  },
+  "runtime": {
+    "python": "3.11",
+    "torch": "2.7.1",
+    "mujoco": "2.3.7",
+    "numpy": "1.26.4",
+    "safetensors": "0.5.3",
+    "transformers": "4.53.3",
+    "peft": "0.21.3",
+    "gymnasium": "0.29.1",
+    "lerobot": "0.4.4",
+    "pillow": "11.2.1",
+    "mujoco_gl": "egl"
+  }
+}
